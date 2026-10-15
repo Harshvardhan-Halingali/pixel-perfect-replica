@@ -1,24 +1,33 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Starfield } from "@/components/space/Starfield";
+import { Bento, CursorGlow, Hero, Navbar, Odyssey, Parallax, Planet } from "@/components/space/Sections";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "Beyond the Event Horizon — Horizon Deep Space" },
+      { name: "description", content: "An immersive warp-speed journey to the edge of spacetime." },
+      { property: "og:title", content: "Beyond the Event Horizon" },
+      { property: "og:description", content: "An immersive warp-speed journey to the edge of spacetime." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <main className="relative">
+      <Starfield />
+      <Planet />
+      <Parallax />
+      <CursorGlow />
+      <Navbar />
+      <Hero />
+      <div id="fleet" />
+      <Bento />
+      <Odyssey />
+    </main>
   );
 }
