@@ -223,7 +223,7 @@ export function Odyssey() {
         {MILESTONES.map((m, idx) => {
           const left = idx % 2 === 0;
           return (
-            <div key={m.t} className={`relative mb-28 flex md:justify-${left ? "start" : "end"}`}>
+            <div key={m.t} className={`relative mb-28 flex ${left ? "md:justify-start" : "md:justify-end"}`}>
               <motion.span initial={{ scale: 0 }} whileInView={{ scale: 1 }} viewport={{ margin: "-40% 0px" }} transition={{ type: "spring" }}
                 className="absolute left-4 top-6 h-5 w-5 -translate-x-1/2 rounded-full bg-cyan glow-cyan animate-pulse-ring md:left-1/2" />
               <motion.div initial={{ opacity: 0, x: left ? -160 : 160, rotate: left ? -6 : 6 }} whileInView={{ opacity: 1, x: 0, rotate: 0 }}
