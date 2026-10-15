@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 
 // Canvas starfield: warp intro, then velocity tied to scroll speed; nebula hue shifts violet → cyan → blue with scroll.
-const NEBULA = [
+const NEBULA: [number, number, number][] = [
   [76, 29, 149],
   [6, 182, 212],
   [59, 130, 246],
@@ -11,7 +11,8 @@ function lerpColor(t: number) {
   const seg = Math.min(1, Math.max(0, t)) * (NEBULA.length - 1);
   const i = Math.min(NEBULA.length - 2, Math.floor(seg));
   const f = seg - i;
-  return NEBULA[i].map((c, k) => Math.round(c + (NEBULA[i + 1][k] - c) * f));
+  const a = NEBULA[i]!, b = NEBULA[i + 1]!;
+  return [0, 1, 2].map((k) => Math.round(a[k]! + (b[k]! - a[k]!) * f)) as [number, number, number];
 }
 
 export function Starfield() {
